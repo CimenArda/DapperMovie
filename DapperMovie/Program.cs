@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<MovieContext>();
 builder.Services.AddScoped<IWidgetRepository,WidgetRepository>();
+builder.Services.AddScoped<ITableRepository,TableRepository>();
 
 var app = builder.Build();
 

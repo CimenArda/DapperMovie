@@ -1,97 +1,43 @@
-﻿<div class="row">
-    <div class="col-md-4">
-        <div class="card card-post card-round">
-            <img class="card-img-top"
-                 src="assets/img/blogpost.jpg"
-                 alt="Card image cap" />
-            <div class="card-body">
-                <div class="d-flex">
-                    <div class="avatar">
-                        <img src="assets/img/profile2.jpg"
-                             alt="..."
-                             class="avatar-img rounded-circle" />
+﻿@model List<Top3LowestBudgetHighestVotesMovieViewModel>
+
+    <div class="container">
+        <h3>En Düşük Bütçeli Ve En Yüksek Oyu Alan 3 Film</h3>
+    </div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card card-post card-round">
+                <img class="card-img-top"
+                     src="@item.poster_path"
+                     alt="Card image cap" style="width:300px;height:256px;" />
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="avatar">
+                            <img src="@item.backdrop_path"
+                                 alt="..."
+                                 class="avatar-img rounded-circle" />
+                        </div>
+                        <div class="info-post ms-2">
+                            <p class="username">@item.Title</p>
+                            <p class="date text-muted">@item.release_date.ToString("dd/M/yyyy")</p>
+                        </div>
                     </div>
-                    <div class="info-post ms-2">
-                        <p class="username">Joko Subianto</p>
-                        <p class="date text-muted">20 Jan 18</p>
-                    </div>
+                    <div class="separator-solid"></div>
+                    <p class="card-category text-info mb-1">
+                        <a href="#">@item.genres</a>
+                    </p>
+                    <h3 class="card-title">
+                        <a href="#"> @item.Title </a>
+                    </h3>
+                    <p class="card-text">
+                      @item.overview
+                    </p>
                 </div>
-                <div class="separator-solid"></div>
-                <p class="card-category text-info mb-1">
-                    <a href="#">Design</a>
-                </p>
-                <h3 class="card-title">
-                    <a href="#"> Best Design Resources This Week </a>
-                </h3>
-                <p class="card-text">
-                    Some quick example text to build on the card title and
-                    make up the bulk of the card's content.
-                </p>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card card-post card-round">
-            <img class="card-img-top"
-                 src="assets/img/blogpost.jpg"
-                 alt="Card image cap" />
-            <div class="card-body">
-                <div class="d-flex">
-                    <div class="avatar">
-                        <img src="assets/img/profile2.jpg"
-                             alt="..."
-                             class="avatar-img rounded-circle" />
-                    </div>
-                    <div class="info-post ms-2">
-                        <p class="username">Joko Subianto</p>
-                        <p class="date text-muted">20 Jan 18</p>
-                    </div>
-                </div>
-                <div class="separator-solid"></div>
-                <p class="card-category text-info mb-1">
-                    <a href="#">Design</a>
-                </p>
-                <h3 class="card-title">
-                    <a href="#"> Best Design Resources This Week </a>
-                </h3>
-                <p class="card-text">
-                    Some quick example text to build on the card title and
-                    make up the bulk of the card's content.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card card-post card-round">
-            <img class="card-img-top"
-                 src="assets/img/blogpost.jpg"
-                 alt="Card image cap" />
-            <div class="card-body">
-                <div class="d-flex">
-                    <div class="avatar">
-                        <img src="assets/img/profile2.jpg"
-                             alt="..."
-                             class="avatar-img rounded-circle" />
-                    </div>
-                    <div class="info-post ms-2">
-                        <p class="username">Joko Subianto</p>
-                        <p class="date text-muted">20 Jan 18</p>
-                    </div>
-                </div>
-                <div class="separator-solid"></div>
-                <p class="card-category text-info mb-1">
-                    <a href="#">Design</a>
-                </p>
-                <h3 class="card-title">
-                    <a href="#"> Best Design Resources This Week </a>
-                </h3>
-                <p class="card-text">
-                    Some quick example text to build on the card title and
-                    make up the bulk of the card's content.
-                </p>
-            </div>
-        </div>
-    </div>
+    }
+    
 
 
 </div>
