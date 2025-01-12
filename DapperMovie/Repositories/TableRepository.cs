@@ -11,6 +11,23 @@ namespace DapperMovie.Repositories
         {
             _movieContext = movieContext;
         }
+
+        public async Task<List<Top10CountriesByFilmCountViewModel>> GetTop10CountriesByFilmCount()
+        {
+            string query = @"
+                           SELECT TOP 10 TRIM(value) AS country, COUNT(*) AS film_count
+                FROM TMDB_movie_dataset_v11
+                CROSS APPLY STRING_SPLIT(production_countries, ',')
+                GROUP BY TRIM(value)
+                ORDER BY film_count DESC;
+
+                            ";
+            using var connection = _movieContext.CreateConnection();
+            var result = await connection.QueryAsync<Top10CountriesByFilmCountViewModel>(query);
+
+            return result.ToList();
+        }
+
         public async Task<List<Top10MovieListViewModel>> GetTop10MovieList()
         {
             string query = @"
