@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<MovieContext>();
 builder.Services.AddScoped<IWidgetRepository,WidgetRepository>();
 builder.Services.AddScoped<ITableRepository,TableRepository>();
+builder.Services.AddScoped<IChartRepository, ChartRepository>();
 
 var app = builder.Build();
 

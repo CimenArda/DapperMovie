@@ -1,0 +1,29 @@
+﻿
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">En Çok Filme Sahip 5 Tür</div>
+            </div>
+            <div class="card-body">
+                <canvas id="pieChart" style="max-width: 600px; max-height: 280px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Pie Chart
+    new Chart(document.getElementById('pieChart').getContext('2d'), {
+        type: 'pie',
+        data: {
+            labels: @Html.Raw(Json.Serialize(Model.Labels)),
+            datasets: [{
+                data: @Html.Raw(Json.Serialize(Model.Data)),
+                backgroundColor: @Html.Raw(Json.Serialize(Model.BackgroundColor))
+                }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>

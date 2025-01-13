@@ -38,6 +38,8 @@ namespace DapperMovie.ViewComponents.DefaultViewComponents
 
             var mostProducingFilmCompany = await _widgetRepository.MostProducingFilmCompany();
             ViewBag.mostProducingFilmCompany= mostProducingFilmCompany;
+
+
             return View();
         }
     }

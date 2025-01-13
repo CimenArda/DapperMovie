@@ -1,0 +1,52 @@
+﻿<div class="col-md-6">
+
+<div class="card">
+    <div class="card-header">
+            <div class="card-title">En Çok Oy Alan İlk 5 Film</div>
+    </div>
+    <div class="card-body">
+        <canvas id="barChart" style="max-width: 600px; max-height: 400px;"></canvas>
+    </div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Dinamik verileri modelden al
+    var labels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Labels));
+    var data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Data));
+    var votes = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Votes));
+
+    // Chart.js ile bar chart oluşturma
+    new Chart(document.getElementById('barChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Oy Ortalamaları',
+                data: data,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        // ToolTip'te oy sayısını göstermek için özel callback
+                        afterLabel: function (tooltipItem) {
+                            return 'Oylar: ' + votes[tooltipItem.dataIndex];
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
